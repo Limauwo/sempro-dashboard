@@ -15,7 +15,10 @@ Di VS Code, halaman juga dapat dijalankan menggunakan ekstensi seperti Live Serv
 
 ## Fitur
 
-- Halaman masuk dengan validasi dasar pada kolom nama pengguna dan kata sandi.
+- Halaman masuk dengan akun demo:
+  - Username: `petani01`
+  - Password: `kompos123`
+- Login demo mengarahkan pengguna ke dashboard saat kredensial sesuai.
 - Dashboard berisi kartu pembacaan sensor, grafik tren, status koneksi, kontrol pompa, dan riwayat.
 - Halaman peringatan menampilkan kondisi sensor, rekomendasi tindakan, dan riwayat peringatan.
 - Halaman penilaian menyediakan pilihan batch, tanggal, aroma, warna, tekstur, tingkat kematangan, pH opsional, dan catatan.
@@ -39,4 +42,4 @@ Di VS Code, halaman juga dapat dijalankan menggunakan ekstensi seperti Live Serv
 
 ## Catatan
 
-Proyek ini masih berupa prototipe frontend. Nilai sensor dan riwayat adalah data contoh; status pompa dan peringatan hanya disimulasikan di halaman. Formulir masuk belum terhubung ke autentikasi, dan penilaian tidak disimpan. Integrasi backend, Firebase, maupun perangkat IoT belum tersedia.
+Proyek ini masih berupa prototipe frontend. Kredensial demo tertulis di `script.js` dan dapat dilihat siapa pun; jangan gunakan username atau password tersebut untuk akun asli. Nilai sensor dan riwayat adalah data contoh, status pompa dan peringatan hanya disimulasikan, dan penilaian tidak disimpan. Login belum memakai autentikasi backend; integrasi Firebase maupun perangkat IoT juga belum tersedia.

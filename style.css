@@ -97,6 +97,14 @@ body {
   line-height: 1.5;
 }
 
+.login-card__description code {
+  padding: 2px 4px;
+  border-radius: 4px;
+  background: #f0f4ee;
+  color: #344438;
+  font-family: inherit;
+}
+
 .form-field {
   display: grid;
   gap: 7px;
