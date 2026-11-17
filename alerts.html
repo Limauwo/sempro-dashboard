@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Peringatan dan rekomendasi Smart Composter." />
+    <title>Peringatan dan rekomendasi — Smart Composter</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="dashboard.css" />
+    <link rel="stylesheet" href="pages.css" />
+    <script src="alerts.js" defer></script>
+  </head>
+  <body class="dashboard-body">
+    <div class="dashboard-shell">
+      <aside class="sidebar">
+        <a class="brand" href="dashboard.html" aria-label="Smart Composter, Dashboard">
+          <strong>Smart Composter</strong>
+          <span>Sistem peringatan dini</span>
+        </a>
+
+        <nav class="sidebar-nav" aria-label="Navigasi utama">
+          <a class="nav-link" href="dashboard.html">Dashboard</a>
+          <a class="nav-link is-active" href="alerts.html" aria-current="page">
+            Peringatan dan rekomendasi
+          </a>
+          <a class="nav-link" href="maturity.html">Penilaian kematangan</a>
+        </nav>
+
+        <a class="logout-link" href="index.html">Keluar</a>
+      </aside>
+
+      <main class="dashboard-main inner-page">
+        <header class="page-heading">
+          <h1>Peringatan dan rekomendasi</h1>
+          <p>Batch 01 · Hasil evaluasi rule-based · Data contoh</p>
+        </header>
+
+        <section class="alert-summary" id="active-alert" aria-labelledby="alert-title">
+          <div class="alert-summary__heading">
+            <h2 id="alert-title">Peringatan dini aktif</h2>
+            <span class="alert-status" id="alert-status">Status: Waspada</span>
+          </div>
+          <p id="alert-description">
+            Kelembapan kompos terbaca di bawah batas pada basis aturan. Kompos
+            yang terlalu kering memperlambat aktivitas mikroba.
+          </p>
+          <p class="alert-feedback" id="alert-feedback" role="status" aria-live="polite"></p>
+        </section>
+
+        <div class="alert-content-grid">
+          <section class="panel detected-panel" aria-labelledby="detected-heading">
+            <h2 class="panel-title" id="detected-heading">Kondisi yang terdeteksi</h2>
+            <div class="responsive-table">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Parameter</th>
+                    <th scope="col">Nilai</th>
+                    <th scope="col">Aturan</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Kelembapan</td>
+                    <td><strong>38 %</strong></td>
+                    <td><span class="badge badge--warning">Di bawah batas</span></td>
+                  </tr>
+                  <tr>
+                    <td>Suhu kompos</td>
+                    <td><strong>52 °C</strong></td>
+                    <td><span class="badge badge--normal">Sesuai</span></td>
+                  </tr>
+                  <tr>
+                    <td>Gas amonia dan VOC</td>
+                    <td><strong>85 ppm</strong></td>
+                    <td><span class="badge badge--normal">Sesuai</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="rule-note">
+              Batas nilai diambil dari basis aturan: [ISI DARI ARTIKEL
+              PENGOMPOSAN DAN MASUKAN PETANI].
+            </p>
+          </section>
+
+          <section class="panel actions-panel" aria-labelledby="actions-heading">
+            <h2 class="panel-title" id="actions-heading">Rekomendasi tindakan</h2>
+            <ol>
+              <li>Lakukan penyiraman pada tumpukan kompos melalui nozzle.</li>
+              <li>Pantau kelembapan pada pembacaan berikutnya.</li>
+              <li>Jika tetap rendah, periksa pompa dan jalur nozzle.</li>
+            </ol>
+            <div class="action-buttons">
+              <button class="action-button action-button--primary" type="button" id="pump-action">
+                Aktifkan pompa
+              </button>
+              <button class="action-button action-button--secondary" type="button" id="resolve-alert">
+                Tandai sudah ditangani
+              </button>
+            </div>
+          </section>
+        </div>
+
+        <section class="panel alert-history" aria-labelledby="alert-history-heading">
+          <h2 class="panel-title" id="alert-history-heading">Riwayat peringatan</h2>
+          <div class="responsive-table">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th scope="col">Waktu</th>
+                  <th scope="col">Peringatan</th>
+                  <th scope="col">Tindakan</th>
+                </tr>
+              </thead>
+              <tbody id="alert-history-rows">
+                <tr>
+                  <td>16 Nov, 14:00</td>
+                  <td>Kelembapan rendah (Waspada)</td>
+                  <td>Menunggu tindakan</td>
+                </tr>
+                <tr>
+                  <td>15 Nov, 09:30</td>
+                  <td>Kelembapan rendah (Waspada)</td>
+                  <td>Penyiraman melalui pompa</td>
+                </tr>
+                <tr>
+                  <td>13 Nov, 16:00</td>
+                  <td>Sensor gas tidak valid</td>
+                  <td>Dibaca ulang otomatis</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

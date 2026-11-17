@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Dashboard monitoring Smart Composter."
+    />
+    <title>Dashboard Monitoring — Smart Composter</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="dashboard.css" />
+    <script src="dashboard.js" defer></script>
+  </head>
+  <body class="dashboard-body">
+    <div class="dashboard-shell">
+      <aside class="sidebar">
+        <a class="brand" href="dashboard.html" aria-label="Smart Composter, Dashboard">
+          <strong>Smart Composter</strong>
+          <span>Sistem peringatan dini</span>
+        </a>
+
+        <nav class="sidebar-nav" aria-label="Navigasi utama">
+          <a class="nav-link is-active" href="#dashboard" aria-current="page">
+            Dashboard
+          </a>
+          <a class="nav-link" href="alerts.html">
+            Peringatan dan rekomendasi
+          </a>
+          <a class="nav-link" href="maturity.html">
+            Penilaian kematangan
+          </a>
+        </nav>
+
+        <a class="logout-link" href="index.html">Keluar</a>
+      </aside>
+
+      <main class="dashboard-main" id="dashboard">
+        <header class="dashboard-header">
+          <div>
+            <h1>Dashboard monitoring</h1>
+            <p>Batch 01 · Komposter limbah pasar · Data contoh</p>
+          </div>
+          <div class="connection-status" aria-label="Status koneksi">
+            <span class="status-chip">ESP32 online</span>
+            <span class="status-chip">Firebase tersinkron</span>
+          </div>
+        </header>
+
+        <section class="recommendation-banner" id="recommendations" aria-labelledby="batch-status">
+          <div>
+            <h2 id="batch-status">Status batch: Waspada</h2>
+            <p>Kelembapan di bawah batas aturan. Penyiraman disarankan.</p>
+          </div>
+          <button class="recommendation-button" type="button" id="recommendation-button" aria-expanded="false">
+            Lihat rekomendasi
+          </button>
+          <p class="recommendation-detail" id="recommendation-detail" hidden>
+            Periksa kondisi bahan kompos, lalu lakukan penyiraman manual secara
+            bertahap. Pantau kembali kelembapan setelah penyiraman.
+          </p>
+        </section>
+
+        <section class="sensor-section" id="sensor-readings" aria-labelledby="sensor-heading">
+          <h2 class="section-title" id="sensor-heading">Pembacaan sensor terbaru</h2>
+          <div class="sensor-grid">
+            <article class="sensor-card">
+              <p class="sensor-label">Suhu kompos</p>
+              <p class="sensor-value">52 <span>°C</span></p>
+              <p class="sensor-source">DS18B20</p>
+              <div class="sensor-badges">
+                <span class="badge badge--normal">Normal</span>
+                <span class="badge badge--valid">Data valid</span>
+              </div>
+            </article>
+
+            <article class="sensor-card">
+              <p class="sensor-label">Suhu udara</p>
+              <p class="sensor-value">31 <span>°C</span></p>
+              <p class="sensor-source">DHT22 / SHT31</p>
+              <div class="sensor-badges">
+                <span class="badge badge--normal">Normal</span>
+                <span class="badge badge--valid">Data valid</span>
+              </div>
+            </article>
+
+            <article class="sensor-card">
+              <p class="sensor-label">Kelembapan</p>
+              <p class="sensor-value">38 <span>%</span></p>
+              <p class="sensor-source">DHT22 / SHT31</p>
+              <div class="sensor-badges">
+                <span class="badge badge--warning">Waspada</span>
+                <span class="badge badge--valid">Data valid</span>
+              </div>
+            </article>
+
+            <article class="sensor-card">
+              <p class="sensor-label">Gas metana</p>
+              <p class="sensor-value">120 <span>ppm</span></p>
+              <p class="sensor-source">MQ-4</p>
+              <div class="sensor-badges">
+                <span class="badge badge--normal">Normal</span>
+                <span class="badge badge--valid">Data valid</span>
+              </div>
+            </article>
+
+            <article class="sensor-card">
+              <p class="sensor-label">Gas amonia dan VOC</p>
+              <p class="sensor-value">85 <span>ppm</span></p>
+              <p class="sensor-source">MQ-135</p>
+              <div class="sensor-badges">
+                <span class="badge badge--normal">Normal</span>
+                <span class="badge badge--valid">Data valid</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <div class="monitoring-grid">
+          <section class="panel trend-panel" aria-labelledby="trend-heading">
+            <h2 class="panel-title" id="trend-heading">Tren suhu dan kelembapan</h2>
+            <div class="chart-legend" aria-label="Keterangan grafik">
+              <span><i class="legend-line legend-line--temperature"></i>Suhu kompos (°C)</span>
+              <span><i class="legend-line legend-line--humidity"></i>Kelembapan (%)</span>
+            </div>
+            <div class="chart-wrap">
+              <svg
+                class="trend-chart"
+                viewBox="0 0 440 150"
+                role="img"
+                aria-label="Grafik tren suhu kompos naik lalu stabil dan kelembapan menurun selama 24 jam terakhir"
+              >
+                <path class="chart-axis" d="M24 18 V122 H426" />
+                <path class="chart-line chart-line--temperature" d="M24 96 C55 82 78 71 106 60 S151 43 183 38 S230 32 270 31 S328 30 365 31 S404 32 426 33" />
+                <path class="chart-line chart-line--humidity" d="M24 28 C65 31 91 35 122 42 S179 55 212 63 S273 77 310 83 S372 91 426 96" />
+                <text x="24" y="139">24 jam lalu</text>
+                <text x="426" y="139" text-anchor="end">Sekarang</text>
+              </svg>
+            </div>
+          </section>
+
+          <section class="panel pump-panel" aria-labelledby="pump-heading">
+            <h2 class="panel-title" id="pump-heading">Kontrol pompa</h2>
+            <p class="panel-caption">Status pompa dan nozzle</p>
+            <p class="pump-state" id="pump-state" aria-live="polite">Mati</p>
+            <p class="pump-note" id="pump-note">
+              Aksi terakhir: penyiraman otomatis, dicatat di riwayat.
+            </p>
+            <button class="pump-button pump-button--primary" type="button" id="water-button">
+              Siram manual
+            </button>
+            <button class="pump-button pump-button--secondary" type="button" id="stop-button" disabled>
+              Hentikan pompa
+            </button>
+          </section>
+        </div>
+
+        <section class="panel history-panel" id="recent-history" aria-labelledby="history-heading">
+          <h2 class="panel-title" id="history-heading">Riwayat terbaru</h2>
+          <div class="history-table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Waktu</th>
+                  <th scope="col">Kejadian</th>
+                  <th scope="col">Status</th>
+                </tr>
+              </thead>
+              <tbody id="history-rows">
+                <tr>
+                  <td>16 Nov, 14:00</td>
+                  <td>Peringatan dini: kelembapan rendah</td>
+                  <td><span class="badge badge--warning">Waspada</span></td>
+                </tr>
+                <tr>
+                  <td>16 Nov, 13:30</td>
+                  <td>Data sensor tersimpan ke Firebase</td>
+                  <td><span class="badge badge--normal">Normal</span></td>
+                </tr>
+                <tr>
+                  <td>16 Nov, 13:00</td>
+                  <td>Pembacaan MQ-135 tidak valid, dibaca ulang</td>
+                  <td><span class="badge badge--warning">Dicatat</span></td>
+                </tr>
+                <tr>
+                  <td>16 Nov, 12:30</td>
+                  <td>Data sensor tersimpan ke Firebase</td>
+                  <td><span class="badge badge--normal">Normal</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

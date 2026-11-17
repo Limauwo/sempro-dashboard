@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Input penilaian kematangan kompos Smart Composter." />
+    <title>Input penilaian kematangan — Smart Composter</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="dashboard.css" />
+    <link rel="stylesheet" href="pages.css" />
+    <script src="maturity.js" defer></script>
+  </head>
+  <body class="dashboard-body">
+    <div class="dashboard-shell">
+      <aside class="sidebar">
+        <a class="brand" href="dashboard.html" aria-label="Smart Composter, Dashboard">
+          <strong>Smart Composter</strong>
+          <span>Sistem peringatan dini</span>
+        </a>
+
+        <nav class="sidebar-nav" aria-label="Navigasi utama">
+          <a class="nav-link" href="dashboard.html">Dashboard</a>
+          <a class="nav-link" href="alerts.html">Peringatan dan rekomendasi</a>
+          <a class="nav-link is-active" href="maturity.html" aria-current="page">
+            Penilaian kematangan
+          </a>
+        </nav>
+
+        <a class="logout-link" href="index.html">Keluar</a>
+      </aside>
+
+      <main class="dashboard-main inner-page">
+        <header class="page-heading">
+          <h1>Input penilaian kematangan</h1>
+          <p>Penilaian petani menjadi acuan kematangan kompos pada batch ini.</p>
+        </header>
+
+        <form class="assessment-card" id="maturity-form">
+          <div class="assessment-grid assessment-grid--batch">
+            <div class="assessment-field">
+              <label for="batch">Batch</label>
+              <select id="batch" name="batch" required>
+                <option value="Batch 01">Batch 01</option>
+                <option value="Batch 02">Batch 02</option>
+                <option value="Batch 03">Batch 03</option>
+              </select>
+            </div>
+            <div class="assessment-field">
+              <label for="assessment-date">Tanggal penilaian</label>
+              <input id="assessment-date" name="assessmentDate" type="date" required />
+            </div>
+          </div>
+
+          <div class="assessment-grid assessment-grid--observations">
+            <div class="assessment-field">
+              <label for="aroma">Aroma</label>
+              <select id="aroma" name="aroma" required>
+                <option value="Seperti tanah">Seperti tanah</option>
+                <option value="Sedikit asam">Sedikit asam</option>
+                <option value="Menyengat">Menyengat</option>
+              </select>
+            </div>
+            <div class="assessment-field">
+              <label for="color">Warna</label>
+              <select id="color" name="color" required>
+                <option value="Cokelat kehitaman">Cokelat kehitaman</option>
+                <option value="Cokelat">Cokelat</option>
+                <option value="Kehijauan">Kehijauan</option>
+              </select>
+            </div>
+            <div class="assessment-field">
+              <label for="texture">Tekstur</label>
+              <select id="texture" name="texture" required>
+                <option value="Remah dan gembur">Remah dan gembur</option>
+                <option value="Agak menggumpal">Agak menggumpal</option>
+                <option value="Masih kasar">Masih kasar</option>
+              </select>
+            </div>
+          </div>
+
+          <fieldset class="maturity-options">
+            <legend>Penilaian kematangan petani</legend>
+            <label>
+              <input type="radio" name="maturity" value="Belum matang" required />
+              <span>Belum matang</span>
+            </label>
+            <label>
+              <input type="radio" name="maturity" value="Hampir matang" />
+              <span>Hampir matang</span>
+            </label>
+            <label>
+              <input type="radio" name="maturity" value="Matang" />
+              <span>Matang</span>
+            </label>
+          </fieldset>
+
+          <div class="assessment-field assessment-field--ph">
+            <label for="ph">pH manual (opsional)</label>
+            <input
+              id="ph"
+              name="ph"
+              type="number"
+              min="0"
+              max="14"
+              step="0.1"
+              placeholder="contoh: 7"
+            />
+          </div>
+
+          <div class="assessment-field">
+            <label for="notes">Catatan batch</label>
+            <textarea
+              id="notes"
+              name="notes"
+              rows="3"
+              placeholder="Tuliskan pengamatan di lapangan"
+            ></textarea>
+          </div>
+
+          <div class="assessment-actions">
+            <button class="action-button action-button--primary" type="submit">
+              Simpan penilaian
+            </button>
+            <button class="action-button action-button--secondary" type="button" id="cancel-assessment">
+              Batal
+            </button>
+          </div>
+          <p class="assessment-feedback" id="assessment-feedback" role="status" aria-live="polite"></p>
+        </form>
+      </main>
+    </div>
+  </body>
+</html>
